@@ -6,6 +6,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import CitySelect from './Sub/CitySelect.vue';
 import FalseInput from './Sub/FalseInput.vue'
 
@@ -15,10 +16,8 @@ export default {
     CitySelect,
     FalseInput
   },
-  data () {
-    return {
-      cityName: '全部'
-    }
+  computed: {
+    ...mapState(['cityName'])
   }
 }
 </script>

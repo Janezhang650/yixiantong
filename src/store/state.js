@@ -1,4 +1,4 @@
-const cityInfo = {
+let cityInfo = {
   cityId: '0',
   cityName: '全部',
   field: 'all'
