@@ -74,6 +74,7 @@ export default {
       }
 
       .area {
+        @include ellipsis;
         color: #999;
         font-size: .14rem;
         line-height: .2rem;
