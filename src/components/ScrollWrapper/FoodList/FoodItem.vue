@@ -67,6 +67,7 @@ export default {
       width: 100%;
       padding:.1rem .1rem 0 1.2rem;
       font-size: .16rem;
+      box-sizing: border-box;
 
       .title {
         @include ellipsis;

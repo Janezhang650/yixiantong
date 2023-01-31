@@ -2,16 +2,19 @@
   <div class="scroll-wrapper" ref="wrapper">
     <div class="scroll-content">
       <categories></categories>
-      <home-title :title="homeTitle.viewTitle"></home-title>
-      <view-list :viewData="homeDatas.viewData"></view-list>
-      <home-title :title="homeTitle.foodTitle"></home-title>
-      <food-list :foodData="homeDatas.foodData"></food-list>
-      <home-title :title="homeTitle.hotelTitle"></home-title>
-      <hotel-list :hotelData="homeDatas.hotelData"></hotel-list>
-      <home-title :title="homeTitle.massageTitle"></home-title>
-      <massage-list :massageData="homeDatas.massageData"></massage-list>
-      <home-title :title="homeTitle.ktvTitle"></home-title>
-      <ktv-list :ktvData="homeDatas.ktvData"></ktv-list>
+      <div v-if="!errorShow">
+        <home-title :title="homeTitle.viewTitle"></home-title>
+        <view-list :viewData="homeDatas.viewData"></view-list>
+        <home-title :title="homeTitle.foodTitle"></home-title>
+        <food-list :foodData="homeDatas.foodData"></food-list>
+        <home-title :title="homeTitle.hotelTitle"></home-title>
+        <hotel-list :hotelData="homeDatas.hotelData"></hotel-list>
+        <home-title :title="homeTitle.massageTitle"></home-title>
+        <massage-list :massageData="homeDatas.massageData"></massage-list>
+        <home-title :title="homeTitle.ktvTitle"></home-title>
+        <ktv-list :ktvData="homeDatas.ktvData"></ktv-list>
+      </div>
+      <error :errorShow="errorShow"></error>
     </div>
   </div>
 </template>
@@ -29,6 +32,7 @@ import FoodList from './FoodList';
 import HotelList from './HotelList';
 import MassageList from './MassageList';
 import KtvList from './KtvList';
+import Error from './Sub/Error.vue';
 
 export default {
   name: 'HomeScrollWrapper',
@@ -39,10 +43,12 @@ export default {
     FoodList,
     HotelList,
     MassageList,
-    KtvList
+    KtvList,
+    Error
   },
   data () {
     return {
+      errorShow: false,
       homeTitle: {
         viewTitle: '推荐景点',
         foodTitle: '推荐美食',
@@ -71,12 +77,15 @@ export default {
       const indexModel = new IndexModel();
       indexModel.getHomeDatas(cityId).then(res => {
         if (res && res.status === 0) {
+          this.errorShow = false;
           const data = res.data;
           this.homeDatas.viewData = data.viewDatas;
           this.homeDatas.foodData = tools.formatData(data.foodDatas, 'keyword');
           this.homeDatas.hotelData = data.hotelDatas;
           this.homeDatas.massageData = data.massageDatas;
           this.homeDatas.ktvData = data.ktvDatas;
+        } else {
+          this.errorShow = true;
         }
       })
     }
