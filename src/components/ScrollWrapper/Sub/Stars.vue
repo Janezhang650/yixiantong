@@ -22,6 +22,7 @@ export default {
 
 .stars-wrapper {
   color: #ccc;
+  margin-right: .05rem;
 
   .active {
     color: $starColor;

@@ -9,6 +9,7 @@
       <home-title :title="homeTitle.hotelTitle"></home-title>
       <hotel-list :hotelData="homeDatas.hotelData"></hotel-list>
       <home-title :title="homeTitle.massageTitle"></home-title>
+      <massage-list :massageData="homeDatas.massageData"></massage-list>
       <home-title :title="homeTitle.ktvTitle"></home-title>
     </div>
   </div>
@@ -25,6 +26,7 @@ import HomeTitle from './Sub/HomeTitle.vue';
 import ViewList from './ViewList';
 import FoodList from './FoodList';
 import HotelList from './HotelList';
+import MassageList from './MassageList';
 
 export default {
   name: 'HomeScrollWrapper',
@@ -33,7 +35,8 @@ export default {
     HomeTitle,
     ViewList,
     FoodList,
-    HotelList
+    HotelList,
+    MassageList
   },
   data () {
     return {
