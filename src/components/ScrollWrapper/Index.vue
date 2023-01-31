@@ -11,6 +11,7 @@
       <home-title :title="homeTitle.massageTitle"></home-title>
       <massage-list :massageData="homeDatas.massageData"></massage-list>
       <home-title :title="homeTitle.ktvTitle"></home-title>
+      <ktv-list :ktvData="homeDatas.ktvData"></ktv-list>
     </div>
   </div>
 </template>
@@ -27,6 +28,7 @@ import ViewList from './ViewList';
 import FoodList from './FoodList';
 import HotelList from './HotelList';
 import MassageList from './MassageList';
+import KtvList from './KtvList';
 
 export default {
   name: 'HomeScrollWrapper',
@@ -36,7 +38,8 @@ export default {
     ViewList,
     FoodList,
     HotelList,
-    MassageList
+    MassageList,
+    KtvList
   },
   data () {
     return {
