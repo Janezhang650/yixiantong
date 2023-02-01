@@ -1,6 +1,6 @@
 <template>
   <div class="view-item">
-    <router-link :to="{ path: '/detail', query: { field: 'view' }, id: view.id}">
+    <router-link :to="{ path: '/detail', query: { field: 'view', id: view.id }}">
       <div class="img-box">
         <img class="view-img" :src="view.img" :alt="view.intro">
       </div>
