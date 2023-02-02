@@ -69,7 +69,7 @@ export default {
     ...mapState(['cityId', 'field'])
   },
   mounted () {
-    this.scroll = new BetterScroll(this.$refs.wrapper);
+    this.scroll = new BetterScroll(this.$refs.wrapper, { mouseWheel: true, click: true, tap: true });
 
     this.getListDatas(this.cityId, this.field);
   },
@@ -91,6 +91,10 @@ export default {
             }, 500);
           } else {
             this.errorShow = true;
+            console.log({
+              errorCode: res.status,
+              errorMsg: res.error
+            });
           }
         })
       }

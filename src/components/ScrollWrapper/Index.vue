@@ -69,7 +69,7 @@ export default {
     ...mapState(['cityId'])
   },
   mounted () {
-    this.scroll = new BetterScroll(this.$refs.wrapper);
+    this.scroll = new BetterScroll(this.$refs.wrapper, { mouseWheel: true, click: true, tap: true });
     this.getHomeDatas(this.cityId);
   },
   methods: {
@@ -86,6 +86,10 @@ export default {
           this.homeDatas.ktvData = data.ktvDatas;
         } else {
           this.errorShow = true;
+          console.log({
+            errorCode: res.status,
+            errorMsg: res.error
+          });
         }
       })
     }

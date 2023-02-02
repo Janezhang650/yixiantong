@@ -23,5 +23,34 @@ export default {
   // 将字符串的逗号全部替换成空格
   replaceToSpace (str) {
     return str.replace(/,/g, ' ');
+  },
+
+  // 去除空格
+  trimSpace (str) {
+    return str.replace(/\s+/g, '');
+  },
+
+  // 函数节流
+  throttle (fn, delay) {
+    let timer = null,
+        beginTime = new Date().getTime();
+
+    return function () {
+      let currentTime = new Date().getTime(),
+          args = arguments,
+          _self = this;
+
+      clearTimeout(timer);
+
+      if (currentTime - beginTime >= delay) {
+        fn.apply(_self, args);
+        beginTime = currentTime;
+      } else {
+        timer = setTimeout(function () {
+          fn.apply(_self, args);
+        }, delay);
+      }
+    }
+
   }
 }

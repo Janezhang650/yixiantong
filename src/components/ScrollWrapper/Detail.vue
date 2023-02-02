@@ -102,7 +102,7 @@ export default {
     this.field = this.$route.query.field;
     this.id = this.$route.query.id;
 
-    this.scroll = new BetterScroll(this.$refs.wrapper);
+    this.scroll = new BetterScroll(this.$refs.wrapper, { mouseWheel: true, click: true, tap: true });
     this.getDetail(this.field, this.id);
   },
   activated () {
@@ -132,6 +132,10 @@ export default {
           this.detailData = data;
         } else {
           this.errorShow = true;
+          console.log({
+            errorCode: res.status,
+            errorMsg: res.error
+          });
         }
       });
     }
