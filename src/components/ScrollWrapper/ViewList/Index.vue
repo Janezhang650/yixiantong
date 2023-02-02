@@ -27,5 +27,6 @@ export default {
 
 .view-list {
   @include flex-row;
+  flex-wrap: wrap;
 }
 </style>
